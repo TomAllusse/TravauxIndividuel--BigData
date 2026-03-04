@@ -9,6 +9,10 @@ import java.util.Properties;
 
 public class DataEngine {
     public static void runPipeline(){
+        System.out.println("============================================");
+        System.out.println("INITIALISATION");
+        System.out.println("============================================");
+
         /* set Variable Globale Java (Windows Only) */
         System.setProperty("hadoop.home.dir", "C:\\Hadoop\\hadoop-3.3.6");
         System.load("C:\\Hadoop\\hadoop-3.3.6\\bin\\hadoop.dll");
@@ -40,7 +44,7 @@ public class DataEngine {
         dfMySQL.show();
 
         System.out.println("============================================");
-        System.out.println("ETAPE MAP");
+        System.out.println("NETTOYAGE");
         System.out.println("============================================");
 
         Dataset<Row> dfMap = dfMySQL
@@ -49,17 +53,13 @@ public class DataEngine {
 
         dfMap.show(5);
 
-        System.out.println("============================================");
-        System.out.println("ETAPE REDUCE ET SHUFFLE");
-        System.out.println("============================================");
-
         Dataset<Row> dfReduce = dfMap.orderBy("region", "name");
 
         dfReduce.show(5);
 
         /* Exporté la donnée */
         System.out.println("============================================");
-        System.out.println("EXPORTATION DE LA DATA");
+        System.out.println("EXPORT");
         System.out.println("============================================");
 
         String cheminExportJSON = "archives_logs_serveurs";

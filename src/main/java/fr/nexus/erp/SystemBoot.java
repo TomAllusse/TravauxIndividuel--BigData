@@ -14,10 +14,11 @@ public class SystemBoot {
     public static void getEtape(){
         String[] lesEtapes = {"Initialisation", "Connexion DB", "Nettoyage", "Export"};
 
+        System.out.println("============================================");
+        System.out.println("ETAPE :");
         for(String etape : lesEtapes){
-            System.out.println("============================================");
-            System.out.println(etape);
-            System.out.println("============================================");
+            System.out.println("- " + etape);
         }
+        System.out.println("============================================");
     }
 }
